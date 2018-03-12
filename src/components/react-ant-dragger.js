@@ -27,7 +27,7 @@ export default class extends PureComponent {
 
   _onChange = inEvent => {
     const {onChange} = this.props;
-    console.log(inEvent);
+    onChange(inEvent);
   };
 
   render() {
