@@ -14,6 +14,7 @@ export default class extends PureComponent {
     value: PropTypes.string,
     onChange: PropTypes.func,
     onError: PropTypes.func,
+    getValue: PropTypes.func
   };
 
   static defaultProps = {
@@ -23,19 +24,15 @@ export default class extends PureComponent {
     action: '//jsonplaceholder.typicode.com/posts/',
     onChange: noop,
     onError: noop,
+    getValue: function(inValue){ return inValue }
   };
   /*===properties end===*/
 
-  _onChange = inEvent => {
-    const {onChange} = this.props;
-    onChange(inEvent);
-  };
-
   _onChange = (inEvent) => {
     const status = inEvent.file.status;
-    const {onChange,onError} = this.props;
+    const { onChange,onError, getValue} = this.props;
     if (status === 'done') {
-      const value = inEvent.file.response.data;
+      const value = getValue(inEvent.file);
       onChange(value);
     } else if (status === 'error') {
       onError(inEvent);
