@@ -1,6 +1,7 @@
 import './dev.scss';
 import ReactAntDragger from './main';
-
+import objectAssign from 'object-assign';
+import {Upload, Icon} from 'antd';
 /*===example start===*/
 
 // install: npm install afeiship/react-ant-dragger --save
@@ -8,7 +9,13 @@ import ReactAntDragger from './main';
 
 class App extends React.Component{
   state = {
-
+    elements:[
+      <p className="ant-upload-drag-icon">
+            <Icon type="inbox"/>
+          </p>,
+          <p className="ant-upload-text">拖拽文件到此完成上传</p>,
+          <p className="ant-upload-hint">支持png/jpg/jpeg/gif/bmp 等常见格式</p>
+    ]
   };
 
   constructor(props){
@@ -21,10 +28,25 @@ class App extends React.Component{
   render(){
     return (
       <div className="hello-react-ant-dragger">
-        <ReactAntDragger />
-        <ReactAntDragger extra={
-          <img className="ml10" src="http://placeholder.qiniudn.com/150" alt=""/>
-        } />
+        <ReactAntDragger>
+        {
+          this.state.elements.map((el,index)=>{
+            return (
+              React.cloneElement(el, objectAssign({ key: index }, el.props))
+            )
+          })
+        }
+        </ReactAntDragger>
+
+        <ReactAntDragger thumbnail value="http://placeholder.qiniudn.com/150">
+        {
+          this.state.elements.map((el,index)=>{
+            return (
+              React.cloneElement(el, objectAssign({ key: index }, el.props))
+            )
+          })
+        }
+        </ReactAntDragger>
       </div>
     );
   }

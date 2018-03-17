@@ -10,14 +10,16 @@ export default class extends PureComponent {
   /*===properties start===*/
   static propTypes = {
     className: PropTypes.string,
-    extra: PropTypes.element,
+    thumbnail: PropTypes.bool,
+    value: PropTypes.string
   };
 
   static defaultProps = {
     name: 'file',
     multiple: true,
+    thumbnail: false,
     action: '//jsonplaceholder.typicode.com/posts/',
-    onChange: noop
+    onChange: noop,
   };
   /*===properties end===*/
 
@@ -30,9 +32,9 @@ export default class extends PureComponent {
     const {
       className,
       children,
-      text,
-      hint,
-      extra,
+      value,
+      elements,
+      thumbnail,
       ...props
     } = this.props;
 
@@ -42,15 +44,14 @@ export default class extends PureComponent {
           {...props}
           className="left"
           onChange={this._onChange}>
-          <p className="ant-upload-drag-icon">
-            <Icon type="inbox"/>
-          </p>
-          <p className="ant-upload-text">拖拽文件到此完成上传</p>
-          <p className="ant-upload-hint">支持png/jpg/jpeg/gif/bmp 等常见格式</p>
           {children}
         </Upload.Dragger>
         {
-          extra && <aside className="right extra">{ extra }</aside>
+          thumbnail && (
+            <firgure className="right">
+              <img src={value} width="150" height="150" alt=""/>
+            </firgure>
+          )
         }
       </section>
     );
