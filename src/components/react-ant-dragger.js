@@ -11,7 +11,9 @@ export default class extends PureComponent {
   static propTypes = {
     className: PropTypes.string,
     thumbnail: PropTypes.bool,
-    value: PropTypes.string
+    value: PropTypes.string,
+    onChange: PropTypes.func,
+    onError: PropTypes.func,
   };
 
   static defaultProps = {
@@ -20,12 +22,24 @@ export default class extends PureComponent {
     thumbnail: false,
     action: '//jsonplaceholder.typicode.com/posts/',
     onChange: noop,
+    onError: noop,
   };
   /*===properties end===*/
 
   _onChange = inEvent => {
     const {onChange} = this.props;
     onChange(inEvent);
+  };
+
+  _onChange = (inEvent) => {
+    const status = inEvent.file.status;
+    const {onChange,onError} = this.props;
+    if (status === 'done') {
+      const value = inEvent.file.response.data;
+      onChange(value);
+    } else if (status === 'error') {
+      onError(inEvent);
+    }
   };
 
   render() {
