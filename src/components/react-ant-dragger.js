@@ -37,7 +37,7 @@ export default class extends PureComponent {
     } = this.props;
 
     return (
-      <section data-align='flex-start' className={classNames('webkit-sassui-flex-lauto-rfixed react-ant-dragger', className)}>
+      <section data-align='flex-start' className={classNames('webkit-sassui-flex-lauto-rfixed react-ant-dragger', className)} {...props}>
         <Upload.Dragger
           {...props}
           className="left"
