@@ -16,6 +16,7 @@ var externals = process.env.NODE_ENV === 'production' ? {
   'react-dom': 'react-dom',
   'noop':'noop',
   'antd':'antd',
+  'next-js-core2':'next-js-core2',
   'webkit-sassui-flex-lauto-rfixed':'webkit-sassui-flex-lauto-rfixed',
   'object-assign':'object-assign',
   'prop-types':'prop-types',

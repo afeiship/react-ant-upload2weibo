@@ -3,6 +3,7 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import noop from 'noop';
+import nx from 'next-js-core2';
 import objectAssign from 'object-assign';
 import {Upload, Icon} from 'antd';
 
@@ -17,7 +18,7 @@ export default class extends PureComponent {
     value: PropTypes.string,
     onChange: PropTypes.func,
     onError: PropTypes.func,
-    getValue: PropTypes.func
+    eventValue: PropTypes.func
   };
 
   static defaultProps = {
@@ -27,15 +28,15 @@ export default class extends PureComponent {
     action: '//jsonplaceholder.typicode.com/posts/',
     onChange: noop,
     onError: noop,
-    getValue: function(inValue){ return inValue }
+    eventValue: nx.returnValue
   };
   /*===properties end===*/
 
   _onChange = (inEvent) => {
     const status = inEvent.file.status;
-    const { onChange,onError, getValue} = this.props;
+    const { onChange,onError, eventValue} = this.props;
     if (status === STATUS_DONE) {
-      onChange( getValue(inEvent.file.response) );
+      onChange( eventValue(inEvent.file.response) );
     } else if (status === STATUS_ERROR) {
       onError(inEvent);
     }
@@ -48,7 +49,7 @@ export default class extends PureComponent {
       value,
       elements,
       thumbnail,
-      getValue,
+      eventValue,
       ...props
     } = this.props;
 
