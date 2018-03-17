@@ -46,6 +46,7 @@ export default class extends PureComponent {
       value,
       elements,
       thumbnail,
+      getValue,
       ...props
     } = this.props;
 
