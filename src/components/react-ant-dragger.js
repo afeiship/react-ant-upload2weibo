@@ -37,9 +37,10 @@ export default class extends PureComponent {
     } = this.props;
 
     return (
-      <section className={classNames('react-ant-dragger', className)}>
+      <section data-align='flex-start' className={classNames('webkit-sassui-flex-lauto-rfixed react-ant-dragger', className)}>
         <Upload.Dragger
           {...props}
+          className="left"
           onChange={this._onChange}>
           <p className="ant-upload-drag-icon">
             <Icon type="inbox"/>
@@ -48,7 +49,9 @@ export default class extends PureComponent {
           <p className="ant-upload-hint">支持png/jpg/jpeg/gif/bmp 等常见格式</p>
           {children}
         </Upload.Dragger>
-        { extra }
+        {
+          extra && <aside className="right extra">{ extra }</aside>
+        }
       </section>
     );
   }

@@ -2,6 +2,14 @@ $react-ant-dragger-options:(
 
 )!default;
 
+@import 'node_modules/webkit-sassui-flex-lauto-rfixed/dist/webkit-sassui-flex-lauto-rfixed.scss';
 .react-ant-dragger{
-  color:#000;
+  > .left{
+  }
+
+  > .right{
+    img{
+      display: block;
+    }
+  }
 }

@@ -21,7 +21,10 @@ class App extends React.Component{
   render(){
     return (
       <div className="hello-react-ant-dragger">
-        <ReactAntDragger ref='rc' />
+        <ReactAntDragger />
+        <ReactAntDragger extra={
+          <img className="ml10" src="http://placeholder.qiniudn.com/150" alt=""/>
+        } />
       </div>
     );
   }
