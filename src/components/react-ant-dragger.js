@@ -6,6 +6,9 @@ import noop from 'noop';
 import objectAssign from 'object-assign';
 import {Upload, Icon} from 'antd';
 
+const STATUS_DONE = 'done';
+const STATUS_ERROR = 'error';
+
 export default class extends PureComponent {
   /*===properties start===*/
   static propTypes = {
@@ -31,10 +34,9 @@ export default class extends PureComponent {
   _onChange = (inEvent) => {
     const status = inEvent.file.status;
     const { onChange,onError, getValue} = this.props;
-    if (status === 'done') {
-      const value = getValue(inEvent.file);
-      onChange(value);
-    } else if (status === 'error') {
+    if (status === STATUS_DONE) {
+      onChange( getValue(inEvent.file.response) );
+    } else if (status === STATUS_ERROR) {
       onError(inEvent);
     }
   };
