@@ -64,7 +64,7 @@ export default class extends PureComponent {
         {
           thumbnail && (
             <firgure className="right">
-              <img src={value} width="150" height="150" alt=""/>
+              <img src={value} alt=""/>
             </firgure>
           )
         }
