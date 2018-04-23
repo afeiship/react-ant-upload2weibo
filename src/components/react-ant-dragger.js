@@ -35,6 +35,7 @@ export default class extends PureComponent {
   _onChange = (inEvent) => {
     const status = inEvent.file.status;
     const { onChange,onError, eventValue} = this.props;
+    console.log(inEvent);
     if (status === STATUS_DONE) {
       onChange( eventValue(inEvent.file.response) );
     } else if (status === STATUS_ERROR) {
@@ -50,6 +51,7 @@ export default class extends PureComponent {
       elements,
       thumbnail,
       eventValue,
+      onChange,
       ...props
     } = this.props;
 
