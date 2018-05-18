@@ -28,7 +28,7 @@ class App extends React.Component{
   render(){
     return (
       <div className="hello-react-ant-dragger">
-        <ReactAntDragger>
+        <ReactAntDragger size={['375px','667px']}>
         {
           this.state.elements.map((el,index)=>{
             return (

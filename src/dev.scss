@@ -8,11 +8,16 @@ ul,li{list-style: none;}
 .hello-react-ant-dragger{
   padding:50px 10px;
 
+  .auto{
+    margin:0 auto;
+  }
+
   .ml10{
     margin-left: 10px;
   }
 
   .react-ant-dragger{
+    @extend .auto;
   }
   button{
     border: none;

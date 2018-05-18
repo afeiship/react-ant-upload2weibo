@@ -6,14 +6,22 @@
 ```javascript
 
   static propTypes = {
-    className: PropTypes.string
+    className: PropTypes.string,
+    value: PropTypes.string,
+    onChange: PropTypes.func,
+    onError: PropTypes.func,
+    eventFilter: PropTypes.func,
+    size: PropTypes.array
   };
 
   static defaultProps = {
     name: 'file',
-    multiple: true,
     action: '//jsonplaceholder.typicode.com/posts/',
-    onChange: noop
+    onChange: noop,
+    onError: noop,
+    eventFilter: noop,
+    size:[],
+    showUploadList: false
   };
   
 ```
@@ -26,7 +34,13 @@
 
 class App extends React.Component{
   state = {
-
+    elements:[
+      <p className="ant-upload-drag-icon">
+            <Icon type="inbox"/>
+          </p>,
+      <p className="ant-upload-hint">拖拽文件到此完成上传</p>,
+      <p className="ant-upload-hint">支持png/jpg/jpeg/gif/bmp 等常见格式</p>
+    ]
   };
 
   constructor(props){
@@ -39,7 +53,15 @@ class App extends React.Component{
   render(){
     return (
       <div className="hello-react-ant-dragger">
-        <ReactAntDragger ref='rc' />
+        <ReactAntDragger size={['375px','667px']}>
+        {
+          this.state.elements.map((el,index)=>{
+            return (
+              React.cloneElement(el, objectAssign({ key: index }, el.props))
+            )
+          })
+        }
+        </ReactAntDragger>
       </div>
     );
   }

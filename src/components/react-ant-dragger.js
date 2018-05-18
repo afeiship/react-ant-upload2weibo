@@ -19,6 +19,7 @@ export default class extends PureComponent {
     onChange: PropTypes.func,
     onError: PropTypes.func,
     eventFilter: PropTypes.func,
+    size: PropTypes.array
   };
 
   static defaultProps = {
@@ -27,6 +28,7 @@ export default class extends PureComponent {
     onChange: noop,
     onError: noop,
     eventFilter: noop,
+    size:[],
     showUploadList: false
   };
   /*===properties end===*/
@@ -71,6 +73,7 @@ export default class extends PureComponent {
       children,
       value,
       onChange,
+      size,
       ...props
     } = this.props;
 
@@ -80,7 +83,7 @@ export default class extends PureComponent {
     return (
       <section
         data-value={hasValue}
-        style={{ width: '100%', height: 200}}
+        style={{ width: size[0], height: size[1] || size[0]}}
         className={classNames('react-ant-dragger', className)}>
         <Spin indicator={this.indicatorView} delay={2} tip='上传中' spinning={loading}>
           <Upload.Dragger
