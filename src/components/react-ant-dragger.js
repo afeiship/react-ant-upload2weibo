@@ -82,7 +82,7 @@ export default class extends PureComponent {
         data-value={hasValue}
         style={{ width: '100%', height: 200}}
         className={classNames('react-ant-dragger', className)}>
-        <Spin delay={2} tip='上传中' spinning={loading}>
+        <Spin indicator={this.indicatorView} delay={2} tip='上传中' spinning={loading}>
           <Upload.Dragger
             {...props}
             multiple={false}
