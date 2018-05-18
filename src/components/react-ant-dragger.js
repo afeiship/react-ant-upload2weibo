@@ -54,7 +54,6 @@ export default class extends PureComponent {
   _onChange = (inEvent) => {
     const status = inEvent.file.status;
     const { onChange, onError, eventFilter } = this.props;
-
     this.setState({ loading: true });
     if (status === STATUS_DONE) {
       this.showBase64Img(inEvent.file.originFileObj);
@@ -85,7 +84,10 @@ export default class extends PureComponent {
         data-value={hasValue}
         style={{ width: size[0], height: size[1] || size[0]}}
         className={classNames('react-ant-dragger', className)}>
-        <Spin indicator={this.indicatorView} delay={2} tip='上传中' spinning={loading}>
+        <Spin
+          indicator={this.indicatorView}
+          tip='上传中'
+          spinning={loading}>
           <Upload.Dragger
             {...props}
             multiple={false}
@@ -96,7 +98,7 @@ export default class extends PureComponent {
           <img className="react-ant-dragger-img" src={base64 || value} alt=""/>
           {
             hasValue && (
-              <div className="webkit-sassui-transform-center-xy webkit-sassui-vim-center react-ant-dragger-mask">
+              <div className="webkit-sassui-transform-center-xy webkit-sassui-vim-center react-ant-dragger-reupload">
                 <Icon type="cloud-upload-o" />
                 <span>重新上传</span>
               </div>

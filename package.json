@@ -91,6 +91,7 @@
     "prop-types": "^15.5.10",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
+    "webkit-sassui-frame-wrapper": "github:afeiship/webkit-sassui-frame-wrapper",
     "webkit-sassui-transform-center": "github:afeiship/webkit-sassui-transform-center",
     "webkit-sassui-vim-center": "github:afeiship/webkit-sassui-vim-center"
   }
