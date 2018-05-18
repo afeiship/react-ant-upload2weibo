@@ -13,8 +13,8 @@ class App extends React.Component{
       <p className="ant-upload-drag-icon">
             <Icon type="inbox"/>
           </p>,
-          <p className="ant-upload-text">拖拽文件到此完成上传</p>,
-          <p className="ant-upload-hint">支持png/jpg/jpeg/gif/bmp 等常见格式</p>
+      <p className="ant-upload-hint">拖拽文件到此完成上传</p>,
+      <p className="ant-upload-hint">支持png/jpg/jpeg/gif/bmp 等常见格式</p>
     ]
   };
 
@@ -29,16 +29,6 @@ class App extends React.Component{
     return (
       <div className="hello-react-ant-dragger">
         <ReactAntDragger>
-        {
-          this.state.elements.map((el,index)=>{
-            return (
-              React.cloneElement(el, objectAssign({ key: index }, el.props))
-            )
-          })
-        }
-        </ReactAntDragger>
-
-        <ReactAntDragger thumbnail value="http://placeholder.qiniudn.com/150">
         {
           this.state.elements.map((el,index)=>{
             return (

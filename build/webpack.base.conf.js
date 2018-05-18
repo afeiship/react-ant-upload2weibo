@@ -16,8 +16,10 @@ var externals = process.env.NODE_ENV === 'production' ? {
   'react-dom': 'react-dom',
   'noop':'noop',
   'antd':'antd',
+  'webkit-sassui-vim-center':'webkit-sassui-vim-center',
+  'webkit-sassui-transform-center':'webkit-sassui-transform-center',
+  'next-file-to-base64':'next-file-to-base64',
   'next-js-core2':'next-js-core2',
-  'webkit-sassui-flex-lauto-rfixed':'webkit-sassui-flex-lauto-rfixed',
   'object-assign':'object-assign',
   'prop-types':'prop-types',
 } : {};

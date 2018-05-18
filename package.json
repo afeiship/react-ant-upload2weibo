@@ -82,14 +82,16 @@
     "npm": ">= 3.0.0"
   },
   "dependencies": {
-    "antd": "^3.2.3",
+    "antd": "^3.5.2",
     "classnames": "^2.2.5",
+    "next-file-to-base64": "github:afeiship/next-file-to-base64",
     "next-js-core2": "github:afeiship/next-js-core2",
     "noop": "github:afeiship/noop",
     "object-assign": "^4.1.1",
     "prop-types": "^15.5.10",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
-    "webkit-sassui-flex-lauto-rfixed": "github:afeiship/webkit-sassui-flex-lauto-rfixed"
+    "webkit-sassui-transform-center": "github:afeiship/webkit-sassui-transform-center",
+    "webkit-sassui-vim-center": "github:afeiship/webkit-sassui-vim-center"
   }
 }
