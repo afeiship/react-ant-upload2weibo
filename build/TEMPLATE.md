@@ -14,33 +14,17 @@ npm install -S @jswork/react-ant-upload
 ## usage
 1. import css
   ```scss
-  @import "~@jswork/boilerplate-react-component/dist/style.css";
+  @import "~@jswork/react-ant-upload/dist/style.css";
 
   // or use sass
-  @import "~@jswork/boilerplate-react-component/dist/style.scss";
+  @import "~@jswork/react-ant-upload/dist/style.scss";
 
   // customize your styles:
-  $boilerplate-react-component-options: ()
+  $react-ant-upload-options: ()
   ```
 2. import js
   ```js
-  import React from 'react';
-  import ReactAntUpload from '@jswork/boilerplate-react-component';
-  import styled from 'styled-components';
-
-  const Container = styled.div`
-    width: 80%;
-    margin: 30px auto 0;
-  `;
-
-  export default (props: any) => {
-    return (
-      <Container>
-        <ReactAntUpload />
-      </Container>
-    );
-  };
-
+__GENERATE_DAPP__
   ```
 
 ## preview
