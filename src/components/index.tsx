@@ -3,10 +3,9 @@ import classNames from 'classnames';
 import React, { Component } from 'react';
 import { Upload } from 'antd';
 import NxLeancloudOptions from '@afeiship/next-leancloud-options';
+import NxWeiboOss from '@jswork/next-weibo-oss';
 
 const CLASS_NAME = 'react-ant-upload2weibo';
-const WEIBO_API = '/weibo_api/interface/pic_upload.php';
-const ROOT_COOKIE = '; Path=/;';
 
 export type ReactAntUpload2weiboProps = {
   /**
@@ -26,18 +25,29 @@ export default class ReactAntUpload2weibo extends Component<ReactAntUpload2weibo
     onChange: noop
   };
 
+  private ossClient: any = null;
+
   async componentDidMount() {
     const lcOpts = new NxLeancloudOptions({ id: '60f768f6d9f1465d3b1d5c43' });
     const res = await lcOpts.get();
-    document.cookie = 'SUB=' + res.value + ROOT_COOKIE;
+    this.ossClient = new NxWeiboOss(res.value);
   }
 
   handleBeforeUpload = () => {
     console.log('click me!');
   };
 
-  handleChange = () => {
-    console.log('click me!');
+  handleChange = (inEvent) => {
+    if(inEvent.percent === 100) {
+      console.log('change.!', inEvent);
+    }
+  };
+
+  handleUploadRequest = (inEvent) => {
+    this.ossClient.upload(inEvent.file).then((res) => {
+      console.log('res:', res[0].url);
+      inEvent.onSuccess(res[0].url);
+    });
   };
 
   render() {
@@ -46,10 +56,10 @@ export default class ReactAntUpload2weibo extends Component<ReactAntUpload2weibo
     return (
       <div data-component={CLASS_NAME} className={classNames(CLASS_NAME, className)}>
         <Upload
-          name="pic1"
-          action={WEIBO_API}
           listType="picture-card"
+          multiple
           beforeUpload={this.handleBeforeUpload}
+          customRequest={this.handleUploadRequest}
           onChange={this.handleChange}
           {...props}>
           + 上传图片

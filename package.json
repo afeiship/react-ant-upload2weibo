@@ -72,6 +72,7 @@
   "dependencies": {
     "@afeiship/next-leancloud-options": "^1.0.5",
     "@jswork/filter-react-props": "^1.0.2",
+    "@jswork/next-weibo-oss": "^1.0.2",
     "@jswork/noop": "^1.0.0",
     "antd": "^4.18.6",
     "classnames": "^2.2.6"
