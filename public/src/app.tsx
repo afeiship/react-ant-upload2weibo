@@ -7,7 +7,7 @@ const Container = styled.div`
   margin: 30px auto 0;
 `;
 
-export default (props: any) => {
+export default () => {
   return (
     <Container>
       <ReactAntUpload2weibo />
