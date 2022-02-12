@@ -1,9 +1,9 @@
 {
-  "name": "@jswork/react-ant-upload",
-  "boilerplate": "react-ant-upload",
+  "name": "@jswork/react-ant-upload-media",
+  "boilerplate": "react-ant-upload-media",
   "homepage": "https://js.work",
   "version": "1.0.0",
-  "description": "React ant upload.",
+  "description": "React ant upload files.",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/main.d.ts",
@@ -81,6 +81,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/afeiship/react-ant-upload.git"
+    "url": "https://github.com/afeiship/react-ant-upload-media.git"
   }
 }

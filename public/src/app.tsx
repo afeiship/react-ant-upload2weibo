@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactAntUpload from '../../src/main';
+import ReactAntUploadMedia from '../../src/main';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -10,7 +10,7 @@ const Container = styled.div`
 export default (props: any) => {
   return (
     <Container>
-      <ReactAntUpload />
+      <ReactAntUploadMedia />
     </Container>
   );
 };
