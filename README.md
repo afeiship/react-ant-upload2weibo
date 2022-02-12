@@ -1,5 +1,5 @@
-# react-ant-upload-media
-> React ant upload files.
+# react-ant-upload2weibo
+> React ant upload image to weibo.
 
 [![version][version-image]][version-url]
 [![license][license-image]][license-url]
@@ -8,7 +8,7 @@
 
 ## installation
 ```shell
-npm install -S @jswork/react-ant-upload-media
+npm install -S @jswork/react-ant-upload2weibo
 ```
 
 ## usage
@@ -25,7 +25,7 @@ npm install -S @jswork/react-ant-upload-media
 2. import js
   ```js
   import React from 'react';
-  import ReactAntUploadMedia from '@jswork/boilerplate-react-component';
+  import ReactAntUpload2weibo from '@jswork/boilerplate-react-component';
   import styled from 'styled-components';
 
   const Container = styled.div`
@@ -36,7 +36,7 @@ npm install -S @jswork/react-ant-upload-media
   export default (props: any) => {
     return (
       <Container>
-        <ReactAntUploadMedia />
+        <ReactAntUpload2weibo />
       </Container>
     );
   };
@@ -44,19 +44,19 @@ npm install -S @jswork/react-ant-upload-media
   ```
 
 ## preview
-- https://afeiship.github.io/react-ant-upload-media/
+- https://afeiship.github.io/react-ant-upload2weibo/
 
 ## license
-Code released under [the MIT license](https://github.com/afeiship/react-ant-upload-media/blob/master/LICENSE.txt).
+Code released under [the MIT license](https://github.com/afeiship/react-ant-upload2weibo/blob/master/LICENSE.txt).
 
-[version-image]: https://img.shields.io/npm/v/@jswork/react-ant-upload-media
-[version-url]: https://npmjs.org/package/@jswork/react-ant-upload-media
+[version-image]: https://img.shields.io/npm/v/@jswork/react-ant-upload2weibo
+[version-url]: https://npmjs.org/package/@jswork/react-ant-upload2weibo
 
-[license-image]: https://img.shields.io/npm/l/@jswork/react-ant-upload-media
-[license-url]: https://github.com/afeiship/react-ant-upload-media/blob/master/LICENSE.txt
+[license-image]: https://img.shields.io/npm/l/@jswork/react-ant-upload2weibo
+[license-url]: https://github.com/afeiship/react-ant-upload2weibo/blob/master/LICENSE.txt
 
-[size-image]: https://img.shields.io/bundlephobia/minzip/@jswork/react-ant-upload-media
-[size-url]: https://github.com/afeiship/react-ant-upload-media/blob/master/dist/react-ant-upload-media.min.js
+[size-image]: https://img.shields.io/bundlephobia/minzip/@jswork/react-ant-upload2weibo
+[size-url]: https://github.com/afeiship/react-ant-upload2weibo/blob/master/dist/react-ant-upload2weibo.min.js
 
-[download-image]: https://img.shields.io/npm/dm/@jswork/react-ant-upload-media
-[download-url]: https://www.npmjs.com/package/@jswork/react-ant-upload-media
+[download-image]: https://img.shields.io/npm/dm/@jswork/react-ant-upload2weibo
+[download-url]: https://www.npmjs.com/package/@jswork/react-ant-upload2weibo

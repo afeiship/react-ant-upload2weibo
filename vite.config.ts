@@ -12,5 +12,14 @@ export default defineConfig({
     outDir: '../docs',
     emptyOutDir: true
   },
-  plugins: [reactRefresh()]
+  plugins: [reactRefresh()],
+  server: {
+    proxy: {
+      '/weibo_api': {
+        target: 'https://picupload.weibo.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/weibo_api/, '')
+      }
+    }
+  }
 });

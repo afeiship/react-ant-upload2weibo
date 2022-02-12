@@ -20,7 +20,7 @@ export default [
       format: 'umd',
       exports: 'named',
       sourcemap: false,
-      name: 'ReactAntUploadMedia',
+      name: 'ReactAntUpload2weibo',
       globals: {
         '@jswork/noop': 'noop',
         'prop-types': 'PropTypes',

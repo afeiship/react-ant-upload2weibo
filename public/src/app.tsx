@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactAntUploadMedia from '../../src/main';
+import ReactAntUpload2weibo from '../../src/main';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -10,7 +10,7 @@ const Container = styled.div`
 export default (props: any) => {
   return (
     <Container>
-      <ReactAntUploadMedia />
+      <ReactAntUpload2weibo />
     </Container>
   );
 };

@@ -1,74 +1,59 @@
 import noop from '@jswork/noop';
 import classNames from 'classnames';
 import React, { Component } from 'react';
-import { Modal, Upload } from 'antd';
+import { Upload } from 'antd';
+import NxLeancloudOptions from '@afeiship/next-leancloud-options';
 
-const CLASS_NAME = 'react-ant-upload-media';
+const CLASS_NAME = 'react-ant-upload2weibo';
+const WEIBO_API = '/weibo_api/interface/pic_upload.php';
+const ROOT_COOKIE = '; Path=/;';
 
-export type ReactAntUploadMediaProps = {
+export type ReactAntUpload2weiboProps = {
   /**
    * The extended className for component.
    */
   className?: string;
-  /**
-   * Before upload.
-   */
-  onUpload?: Function;
   /**
    * The change handler.
    */
   onChange?: Function;
 };
 
-export default class ReactAntUploadMedia extends Component<ReactAntUploadMediaProps> {
+export default class ReactAntUpload2weibo extends Component<ReactAntUpload2weiboProps> {
   static displayName = CLASS_NAME;
   static version = '__VERSION__';
   static defaultProps = {
-    onUpload: noop,
     onChange: noop
   };
 
-  state = {
-    previewVisible: false
+  async componentDidMount() {
+    const lcOpts = new NxLeancloudOptions({ id: '60f768f6d9f1465d3b1d5c43' });
+    const res = await lcOpts.get();
+    document.cookie = 'SUB=' + res.value + ROOT_COOKIE;
+  }
+
+  handleBeforeUpload = () => {
+    console.log('click me!');
   };
 
-  handleChange = (inEvent) => {
-    const { fileList } = inEvent;
-    console.log('click me!', fileList);
-  };
-
-  handleUpload = (inEvent) => {
-    const { onUpload } = this.props;
-    onUpload!({ target: { value: inEvent } });
-  };
-
-  handleModelClose = () => {
-    this.setState({ previewVisible: false });
+  handleChange = () => {
+    console.log('click me!');
   };
 
   render() {
-    const { className, onChange, onUpload, ...props } = this.props;
-    const { previewVisible } = this.state;
+    const { className, onChange, ...props } = this.props;
 
     return (
-      <div data-component={CLASS_NAME} className={classNames(CLASS_NAME, className)} {...props}>
+      <div data-component={CLASS_NAME} className={classNames(CLASS_NAME, className)}>
         <Upload
+          name="pic1"
+          action={WEIBO_API}
+          listType="picture-card"
+          beforeUpload={this.handleBeforeUpload}
           onChange={this.handleChange}
-          beforeUpload={this.handleUpload}
-          listType='picture-card'
-          {...props}
-        >
-          + 点击上传
+          {...props}>
+          + 上传图片
         </Upload>
-        <Modal
-          visible={previewVisible}
-          title='预览'
-          footer={null}
-          onCancel={this.handleModelClose}
-        >
-          <img alt='example' style={{ width: '100%' }}
-               src='https://tva1.sinaimg.cn/large/007S8ZIlgy1gexw87htqhj305k05k74o.jpg' />
-        </Modal>
       </div>
     );
   }
