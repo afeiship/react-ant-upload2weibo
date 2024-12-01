@@ -31,7 +31,7 @@ export type ReactAntUpload2weiboProps = {
   previewProps?: any;
 };
 
-const WEIBO_KEY = '60f768f6d9f1465d3b1d5c43';
+const WEIBO_LC_KEY = '60f768f6d9f1465d3b1d5c43';
 
 export default class ReactAntUpload2weibo extends Component<ReactAntUpload2weiboProps> {
   static displayName = CLASS_NAME;
@@ -62,7 +62,7 @@ export default class ReactAntUpload2weibo extends Component<ReactAntUpload2weibo
 
   async componentDidMount() {
     const { baseURL } = this.props;
-    const lcOpts = new nx.LeancloudOptions({ id: WEIBO_KEY });
+    const lcOpts = new nx.LeancloudOptions({ id: WEIBO_LC_KEY });
     const res = await lcOpts.get();
     this.ossClient = new nx.WeiboOss(res.value, { baseURL });
   }
@@ -70,9 +70,7 @@ export default class ReactAntUpload2weibo extends Component<ReactAntUpload2weibo
   handleChange = (inEvent) => {
     const { onChange } = this.props;
     this.fileList = inEvent.fileList;
-    if (this.done) {
-      onChange?.(this.value);
-    }
+    if (this.done) onChange?.(this.value);
   };
 
   handleUploadRequest = (inEvent) => {
