@@ -1,9 +1,10 @@
-import noop from '@jswork/noop';
 import classNames from 'classnames';
 import React, { Component } from 'react';
 import { Modal, Upload } from 'antd';
-import NxLeancloudOptions from '@afeiship/next-leancloud-options';
-import NxWeiboOss from '@jswork/next-weibo-oss';
+
+import nx from '@jswork/next';
+import '@afeiship/next-leancloud-options';
+import '@jswork/next-weibo-oss';
 
 const CLASS_NAME = 'react-ant-upload2weibo';
 
@@ -13,17 +14,31 @@ export type ReactAntUpload2weiboProps = {
    */
   className?: string;
   /**
+   * Preview url for oss preview.
+   */
+  baseURL?: string;
+  /**
+   * The upload props.
+   */
+  multiple?: boolean;
+  /**
    * The change handler.
    */
   onChange?: Function;
+  /**
+   * The preview props.
+   */
   previewProps?: any;
 };
+
+const WEIBO_KEY = '60f768f6d9f1465d3b1d5c43';
 
 export default class ReactAntUpload2weibo extends Component<ReactAntUpload2weiboProps> {
   static displayName = CLASS_NAME;
   static version = '__VERSION__';
   static defaultProps = {
-    onChange: noop
+    baseURL: 'https://tva1.js.work',
+    multiple: false
   };
 
   private ossClient: any = null;
@@ -39,27 +54,31 @@ export default class ReactAntUpload2weibo extends Component<ReactAntUpload2weibo
   }
 
   get value() {
+    const { multiple } = this.props;
+    const file = this.fileList[0];
+    if (!multiple) return file.response;
     return this.fileList.map((item) => item.response);
   }
 
   async componentDidMount() {
-    const lcOpts = new NxLeancloudOptions({ id: '60f768f6d9f1465d3b1d5c43' });
+    const { baseURL } = this.props;
+    const lcOpts = new nx.LeancloudOptions({ id: WEIBO_KEY });
     const res = await lcOpts.get();
-    this.ossClient = new NxWeiboOss(res.value);
+    this.ossClient = new nx.WeiboOss(res.value, { baseURL });
   }
 
   handleChange = (inEvent) => {
     const { onChange } = this.props;
     this.fileList = inEvent.fileList;
     if (this.done) {
-      onChange!({ target: { value: this.value } });
+      onChange?.(this.value);
     }
   };
 
   handleUploadRequest = (inEvent) => {
     const { file } = inEvent;
     this.ossClient.upload(file).then((res) => {
-      inEvent.onSuccess(res[0].url, file);
+      inEvent.onSuccess(res[0], file);
     });
   };
 
@@ -68,7 +87,7 @@ export default class ReactAntUpload2weibo extends Component<ReactAntUpload2weibo
   };
 
   render() {
-    const { className, onChange, previewProps, ...props } = this.props;
+    const { className, onChange, previewProps, multiple, ...props } = this.props;
     const { currentIndex, previewVisible } = this.state;
 
     return (
@@ -86,14 +105,14 @@ export default class ReactAntUpload2weibo extends Component<ReactAntUpload2weibo
           + 上传图片
         </Upload>
         <Modal
-          visible={previewVisible}
+          open={previewVisible}
           title="图片预览"
           width={800}
           footer={null}
           onCancel={this.handleModelCancel}
           {...previewProps}>
           {currentIndex >= 0 && (
-            <img alt="example" style={{ width: '100%' }} src={this.value[currentIndex]} />
+            <img alt="example" style={{ width: '100%' }} src={this.value.url} />
           )}
         </Modal>
       </div>

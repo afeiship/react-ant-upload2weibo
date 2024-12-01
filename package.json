@@ -2,7 +2,7 @@
   "name": "@jswork/react-ant-upload2weibo",
   "boilerplate": "react-ant-upload2weibo",
   "homepage": "https://js.work",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "React ant upload image to weibo.",
   "license": "MIT",
   "main": "dist/index.js",

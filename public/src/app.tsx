@@ -10,7 +10,11 @@ const Container = styled.div`
 export default () => {
   return (
     <Container>
-      <ReactAntUpload2weibo />
+      <ReactAntUpload2weibo
+        onChange={(e) => {
+          console.log('upload changed value: ', e);
+        }}
+      />
     </Container>
   );
 };
